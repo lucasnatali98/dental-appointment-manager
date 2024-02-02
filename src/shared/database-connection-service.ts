@@ -2,7 +2,8 @@ import { drizzle } from "drizzle-orm/mysql2"
 import mysql from 'mysql2/promise'
 
 // const CONNECTION_LIMIT = 50
-type DefaultConnection = typeof drizzle
+export type DefaultConnection = typeof drizzle
+
 export interface DatabaseConnectionService {
   getConnection(): DefaultConnection
 }
@@ -24,7 +25,7 @@ export class DatabaseConnectionServiceImpl
 
   public getConnection() {
 
-    const poolConnection = mysql.createPool({
+    const poolConnection =  mysql.createPool({
         host: 'localhost',
         user: 'root',
         password: 'password',

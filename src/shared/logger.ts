@@ -1,8 +1,5 @@
 import winston from 'winston'
 
-
-
-
 function stringify(obj: unknown) {
   let cache: unknown[] = []
   const str = JSON.stringify(obj, function (key, value) {
