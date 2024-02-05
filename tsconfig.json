@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "target": "es2021",
+      "module": "ES6",
+      "baseUrl": "./",
+      "paths": {
+        "@/*": ["./src/*"],
+        "@test/*": ["./test/*"]
+      },
+      "types": ["vitest/globals"],
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "moduleResolution": "Bundler",
+      "strict": true,
+      "skipLibCheck": true,
+      "sourceMap": true,
+      "experimentalDecorators": true,
+      "strictPropertyInitialization": false
+    }
+  }

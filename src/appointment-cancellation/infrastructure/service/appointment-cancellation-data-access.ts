@@ -9,7 +9,7 @@ export class AppointmentCancellationDataAccessImpl implements AppointmentCancell
 
   async cancelAppointment(appointmentId: string, reason: string): Promise<boolean> {
     try {
-      this._connection
+      
         return true;
     } catch (error) {
         console.log(error);
