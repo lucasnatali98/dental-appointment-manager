@@ -1,19 +1,20 @@
 import { AppointmentCancellationApplication } from "../application/appointment-cancellation-application";
-
+import {Request, Response} from "express";
 export interface AppointmentCancellationController {
     cancellation(
-        appointmentId: string,
-        reason: string
+      request: Request,
+      response: Response
     ): Promise<boolean>
 }
 export class AppointmentCancellationControllerImpl implements AppointmentCancellationController {
   constructor(
-    private readonly appointmentCancellationApplication: AppointmentCancellationApplication
+    private readonly _appointmentCancellationApplication: AppointmentCancellationApplication
   ) {
     // Define your API routes here
   }
-    async cancellation(appointmentId: string, reason: string): Promise<boolean> {
+    async cancellation(request: Request, response: Response): Promise<boolean> {
         try {
+          
             return true
         } catch (error) {
             return false;
