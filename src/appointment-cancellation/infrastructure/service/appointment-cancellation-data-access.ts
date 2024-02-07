@@ -3,13 +3,12 @@ import { AppointmentCancellationDataAccess } from "../../application/service/dat
 
 export class AppointmentCancellationDataAccessImpl implements AppointmentCancellationDataAccess {
   constructor(
-    private _connection: DefaultConnection
-  ) {
-  }
+    private readonly _connection: DefaultConnection
+  ) {}
 
   async cancelAppointment(appointmentId: string, reason: string): Promise<boolean> {
     try {
-      
+        const query = `UPDATE appointments SET status = 'cancelled', reason = '${reason}' WHERE id = '${appointmentId}'`; 
         return true;
     } catch (error) {
         console.log(error);

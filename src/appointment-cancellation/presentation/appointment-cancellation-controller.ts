@@ -1,9 +1,9 @@
+import logger from "@/shared/logger";
 import { AppointmentCancellationApplication } from "../application/appointment-cancellation-application";
 import {Request, Response} from "express";
 export interface AppointmentCancellationController {
     cancellation(
-      request: Request,
-      response: Response
+      request: Request
     ): Promise<boolean>
 }
 export class AppointmentCancellationControllerImpl implements AppointmentCancellationController {
@@ -12,11 +12,19 @@ export class AppointmentCancellationControllerImpl implements AppointmentCancell
   ) {
     // Define your API routes here
   }
-    async cancellation(request: Request, response: Response): Promise<boolean> {
+    async cancellation(request: Request): Promise<boolean> {
         try {
+          const id = request.body.id;
+          const reason = request.body.reason;
+
+          const result = await this._appointmentCancellationApplication.cancellation(
+            id,
+            reason
+          );
           
-            return true
+          return result
         } catch (error) {
+            logger.error(error);
             return false;
         }
     }

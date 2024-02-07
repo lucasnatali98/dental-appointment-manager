@@ -8,7 +8,21 @@ export class AppointmentCancellationRoutesImpl implements AppointmentCancellatio
         private readonly _router: Router,
         private readonly _controller: AppointmentCancellationController) {
     }
-    post(request: Request, response: Response): void {
-        this._controller.cancellation(request, response)
+    async cancellation(): Promise<void> {
+        this._router.post('/cancellation', async (request: Request, response: Response) => {
+            const cancelResponse = await this._controller.cancellation(request);
+
+            if(!cancelResponse) {
+                response.status(400).send({
+                    message: 'Houve um problema durante o cancelamento da consulta',
+                    data: null
+                })
+            }
+            response.status(200).send({
+                message: 'O cancelamento ocorreu com sucesso',
+                data: true
+            })
+        })
     }
+    
 }
